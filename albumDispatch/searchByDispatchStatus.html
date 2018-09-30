@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>新专辑分发监控</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="dist/css/my.css">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
+    <link rel="stylesheet" href="main/css/ui.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body class="skin-blue-light sidebar-mini">
+<div class="wrapper">
+
+    <header class=" main-header" id="my-menu">
+        <!-- Logo -->
+        <a class="logo" href="#systems" data-toggle="collapse" data-parent="#my-menu">
+            <b>新专辑分发监控</b>
+        </a>
+
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section id="sidebar" class="sidebar collapse in">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+
+                <li class="treeview">
+
+                <li><a href="index.html"><i class="fa fa-circle-o"></i> 专辑状态变更记录</a></li>
+                <li><a href="searchByDispatchStatus.html"><i class="fa fa-circle-o"></i> 分发状态变更记录</a></li>
+                <li><a href="searchByRecommendLevel.html"><i class="fa fa-circle-o"></i> 推荐等级变更记录</a></li>
+                <li><a href="albumCurrentStatus.html"><i class="fa fa-circle-o"></i> 专辑当前状态查询</a></li>
+                <li><a href="albumScoreStatistics.html"><i class="fa fa-circle-o"></i> 质量分分布</a></li>
+                <li><a href="albumNotStartedReason.html"><i class="fa fa-circle-o"></i> 专辑启动失败记录</a></li>
+                <li><a href="albumTrait.html"><i class="fa fa-circle-o"></i> 专辑画像查询</a></li>
+                <li><a href="albumPoolFlow.html"><i class="glyphicon glyphicon-signal"></i> 专辑池流动数量</a></li>
+                <li><a href="albumDispatchFlow.html"><i class="glyphicon glyphicon-signal"></i> 流量监控</a></li>
+
+                </li>
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Main row -->
+            <div class="row">
+
+                <!-- SELECT2 EXAMPLE -->
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">按分发状态查询</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>分发状态</label>
+                                        <select class="form-control" id="dispatchStatus" name="dispatchStatus" style="width: 100%;" placeholder="选择分发状态">
+                                            <option value="0">Enable</option>
+                                            <option value="1">Disable</option>
+                                            <option value="2">Pause</option>
+                                        </select>
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>起始时间</label>
+                                        <input type="text" class="form-control datepicker" id="startTime"/>
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.col -->
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>结束时间</label>
+                                        <input type="text" class="form-control datepicker" id="endTime"/>
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.col -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>最近时间</label>
+                                        <select class="form-control" id="latestTime" name="latestTime" style="width: 100%;">
+                                            <option value="1">最近1天</option>
+                                            <option value="3">最近3天</option>
+                                            <option value="7">最近7天</option>
+                                            <option value="20">最近20天</option>
+                                        </select>
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.col -->
+                                <div class="col-md-2">
+                                    <label>&nbsp;</label>
+                                    <button class="btn btn-primary btn-block btn-flat" id="searchByDispatchStatus">查询</button>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+                <div class="box box-info" id="queryResult" style="display: none">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">查询结果</h3>
+                    </div><!-- /.box-header -->
+                    <div id="boxResult" class="box-body" style="overflow: auto">
+                        <table id="result" class="table table-bordered table-hover">
+                            <thead>
+
+                            </thead>
+                            <tbody id="tableBody">
+
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+
+                </div><!-- /.box -->
+            </div><!-- /.row (main row) -->
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+</div><!-- ./wrapper -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+<script src="plugins/datepicker/WdatePicker.js"></script>
+<!-- Bootstrap 3.3.4 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+
+<script src="main/js/ui.js"></script>
+<script src="main/js/searchByRecord4.js"></script>
+<!-- Page script -->
+
+</body>
+</html>

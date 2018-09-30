@@ -1,0 +1,20 @@
+.content{
+    padding-top:0;
+}
+.box{
+    border-radius:1px;
+    border-top:1px solid #d2d6de;
+    margin-bottom:0px;
+}
+.main-sidebar, .left-side{
+    border-top:1px solid #d2d6de;
+}
+.box.box-info {
+    border-top:2px solid #d2d6de;
+}
+.skin-blue-light .sidebar-menu>li>.treeview-menu {
+    background: #f9fafc;
+}
+select{
+    border-radius: 0;
+}
